@@ -17,7 +17,7 @@ export const Buttons = styled.div``
 export const LinkComponent = styled(Link)`
   margin-left: 2.5rem;
   text-decoration: none;
-  font-size: ${theme.font.sizes.regular.label};
+  //font-size: ${theme.font.sizes.regular.label};
   color: ${theme.colors.textBase};
   text-align: center;
 `
@@ -27,3 +27,22 @@ export const Logo = styled.img`
   height: 1.3125rem;
   margin-right: 2.5rem;
 `
+
+export const CarouselWrapper = styled.div`
+  /* Adicione os estilos conforme necessário */
+  .xl\:mr-14 {
+    /* Estilos para a classe xl:mr-14 */
+  }
+  .xl\:static {
+    /* Estilos para a classe xl:static */
+  }
+  /* ... e assim por diante para as demais classes */
+
+  /* Estilos para a div interna */
+  display: flex;
+  items: center;
+  justify-content: center;
+  height: 9rem; /* Ajuste o valor de acordo com o desejado */
+  border-bottom: 1px solid ${theme.colors.secondary["200"]};
+  border-top: 1px solid ${theme.colors.secondary["200"]};
+`;

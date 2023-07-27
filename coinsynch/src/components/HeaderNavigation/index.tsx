@@ -5,6 +5,8 @@ import LogoCoinSynch from '@/assets/coin-synch.svg'
 
 
 import * as S from './styles'
+import { Suspense } from 'react'
+import HeaderNavigationCoinCarousel from '@/components/HeaderNavigationCoinCarousel'
 
 function HeaderNavigation() {
   return (
@@ -14,7 +16,14 @@ function HeaderNavigation() {
         <S.Links>
           <S.LinkComponent href="#about">About Us</S.LinkComponent>
           <S.LinkComponent href="#criptos">Top Cryptos</S.LinkComponent>
+          
         </S.Links>
+        <S.CarouselWrapper>
+            <Suspense fallback="">
+              {/* @ts-expect-error Async Server Component */}
+              <HeaderNavigationCoinCarousel />
+            </Suspense>
+          </S.CarouselWrapper>
 
         <S.Buttons>
           <Button variant="text">Sign in</Button>

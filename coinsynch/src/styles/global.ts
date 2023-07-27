@@ -3,7 +3,7 @@ import { createGlobalStyle, css } from 'styled-components'
 const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: 'Roboto';
-    src: url('/fonts/Roboto-Regular.ttf');
+    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
