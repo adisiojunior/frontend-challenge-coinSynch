@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css, keyframes} from 'styled-components';
 import theme from '@/styles/theme'
 
 export const TopCoinsCarouselWrapper = styled.div`
@@ -11,36 +11,29 @@ export const TopCoinsCarouselWrapper = styled.div`
   justify-content: center;
 `;
 
-export const CarouselContainer = styled.div.attrs(props => ({
-  style: {
-    transform: `translateX(-${props.currentIndex * 100}%)`,
-  },
-}))`
-  /* Estilos do carousel */
-  /* ... */
 
-  /* Estilos do contêiner que será animado */
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  transition: transform 0.5s ease-in-out;
+const scrollAnimation = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 `;
 
-export const CarouselItemLabel = styled.div`
+export const CarouselContainer = styled.div<{ currentIndex: number }>`
   display: flex;
-  gap: 2rem;
-  color: ${theme.colors.secondary['800']};
+  animation: ${scrollAnimation} 10s linear infinite;
+  transform: ${({ currentIndex }) => `translateX(-${currentIndex * 100}%)`};
+`;
 
-  .text-default {
-    color: ${theme.colors.textBase};
-  }
-
-  .text-tertiary-500 {
-    color: ${theme.colors.tertiary['500']};
-  }
-
-  .text-quartenary-500 {
-    color: ${theme.colors.quartenary['500']};
-  }
+export const CarouselItemWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+export const SymbolText = styled.span`
+  color: ${theme.colors.textBase};
+`;
+export const PriceText = styled.span`
+  color: ${theme.colors.tertiary['500']};
 `;

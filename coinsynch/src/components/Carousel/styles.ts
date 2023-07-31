@@ -5,7 +5,7 @@ const MAX_DELAY = 6;
 
 export const CarouselContainer = styled.div`
   position: absolute;
-  top: 32px;
+  top: 100px;
   right: 0;
   width: 640px;
   height: 500px;

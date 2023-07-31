@@ -1,14 +1,23 @@
-
 import Container from '@/components/Container'
 import { Button } from '@/components/Button'
 import LogoCoinSynch from '@/assets/coin-synch.svg'
 
-
 import * as S from './styles'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import HeaderNavigationCoinCarousel from '@/components/HeaderNavigationCoinCarousel'
+import SignIn from '@/components/Auth/modalAuth/signin'
 
 function HeaderNavigation() {
+  const [isOpen, setIsOpen] = useState(false);
+
+    function openModal() {
+        console.log("Clicado!!")
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
   return (
     <Container>
       <S.Wrapper>
@@ -16,17 +25,16 @@ function HeaderNavigation() {
         <S.Links>
           <S.LinkComponent href="#about">About Us</S.LinkComponent>
           <S.LinkComponent href="#criptos">Top Cryptos</S.LinkComponent>
-          
         </S.Links>
         <S.CarouselWrapper>
-            <Suspense fallback="">
-              {/* @ts-expect-error Async Server Component */}
-              <HeaderNavigationCoinCarousel />
-            </Suspense>
-          </S.CarouselWrapper>
+          <Suspense fallback="Loading...">
+            <HeaderNavigationCoinCarousel />
+          </Suspense>
+        </S.CarouselWrapper>
 
         <S.Buttons>
-          <Button variant="text">Sign in</Button>
+          <Button variant="text" onClick={openModal}>Sign in</Button>
+          {isOpen && <SignIn />}
           <Button variant="contained">Sign up</Button>
         </S.Buttons>
       </S.Wrapper>
@@ -34,4 +42,4 @@ function HeaderNavigation() {
   )
 }
 
-export default HeaderNavigation
+export default HeaderNavigation;
